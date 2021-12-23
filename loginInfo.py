@@ -32,9 +32,13 @@ if __name__ == '__main__':
     loginInfo = getCustomerPks()
     pks = loginInfo[0]
     hashes = loginInfo[1]
+    # if '691497' in pks:
+    #     print(True)
+    # else:
+    #     print(False)
 
-    print("INSERT INTO LOGIN")
-    for i in range(len(pks)):
-        print(f"VALUES('{pks[i]}', '{hashes[i]}')", end='')
+    print("INSERT INTO LOGIN VALUES")
+    for i in range(len(pks)-1):
+        print(f"('{pks[i]}', '{hashes[i]}')", end='')
         if i != (len(pks)-1):
             print(',')

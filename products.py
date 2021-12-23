@@ -2,6 +2,21 @@
 import random
 import math
 
+def createProductId(amountNeeded):
+    listOfProductIDs = [math.floor(random.random() * 1000) for x in range(amountNeeded)]
+    writeToProductIDS = open("ProductIDS.txt", "w")
+
+    for i in listOfProductIDs:
+        writeToProductIDS.write(str(i))
+
+    writeToProductIDS.close()
+    return listOfProductIDs
+
+
+
+
+    return listOfProductIDs
+
 def getProductNames():
     readProductNames = open("productNames.txt")
     writeToProductSyle = open("productStyleNumbers", "w")
@@ -30,6 +45,11 @@ def generatePrices():
 
     return [costPrice, salePrice]
 
+def getDates(amountOfDates):
+    readDates = open("dates.txt")
+    dateList = list(readDates.read().split("\n"))
+    readDates.close()
+    return dateList
 
 
 if __name__ == '__main__':
@@ -38,11 +58,13 @@ if __name__ == '__main__':
     salePrice = prices[1]
     productNames = getProductNames()
     productStyles = getProductStyleNums()
+    getProductIDS = createProductId(len(productNames))
+    getDateList = getDates(len(productNames))
 
 
-    print("INSERT INTO PRODUCTS")
+    print("INSERT INTO PRODUCTS VALUES")
     for i in range(len(productNames)):
-        print(f"VALUES ('{productNames[i]}','{productStyles[i]}', '{costPrice[i]}', '{salePrice[i]}')", end='')
+        print(f" ('{getProductIDS[i]}', '{productNames[i]}','{productStyles[i]}', '{costPrice[i]}', '{salePrice[i]}', '{getDateList[random.randint(0, len(productNames) -1)]}')", end='')
         if i != (len(productNames)-1):
             print(',')
 

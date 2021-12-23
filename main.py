@@ -13,10 +13,13 @@ This file generates the data for the customers table
 def generateCustomerIDS(amountOfNumbersToGenerate):
     writeToListOfCustomersPKs = open('listOfMyCustomerPKs.txt', 'w')
     pkList = [math.floor(random.random() * 1000000) for x in range(amountOfNumbersToGenerate)]
-    for i in pkList:
+    setOfPks = set(pkList)
+    newPkList = []
+    for i in setOfPks:
+        newPkList.append(i)
         writeToListOfCustomersPKs.write(f"{str(i)}\n")
     writeToListOfCustomersPKs.close()
-    return pkList
+    return newPkList
 
 
 def getAListOfFirstNames():
@@ -79,9 +82,9 @@ if __name__ == '__main__':
 
 
     # print(generatePhoneNumbers())
-    print("INSERT INTO CUSTOMERS", end='')
+    print("INSERT INTO CUSTOMERS VALUES", end='')
     for i in range(num):
-        print(F" \nVALUES('{customerIDs[i]}', "
+        print(F" \n('{customerIDs[i]}', "
               F"'{lastNames[i]}', "
               F"'{firstNames[i]}', "
               F"'{generatePhoneNumbers()}', "

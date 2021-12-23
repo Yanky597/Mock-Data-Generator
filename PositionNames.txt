@@ -1,0 +1,13 @@
+AWarehouse Worker
+ADelivery Person
+AMaintenance
+AShipping Personal
+WCustomer Service
+DMarketing
+WSales
+DAccountant
+DHR
+DEngineer
+WFront End Developer
+WBack End Developer
+DDatabase Engineer
