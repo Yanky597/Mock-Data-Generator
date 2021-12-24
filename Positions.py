@@ -12,14 +12,14 @@ def getValuesFromFile(fileName):
 
 if __name__ == '__main__':
 
-    getDepartmentNames = list(getValuesFromFile("DepartmentNames.txt"))
-    getDepartmentIDS = list(getValuesFromFile("DepartmentIDS.txt"))
+    getDepartmentNames = list(getValuesFromFile("txtFiles/DepartmentNames.txt"))
+    getDepartmentIDS = list(getValuesFromFile("txtFiles/DepartmentIDS.txt"))
     amountOfDepIDS = getDepartmentIDS[:len(getDepartmentNames)]
 
-    positionIDs = getValuesFromFile("PositionIDS.txt")
-    positionNames = getValuesFromFile("PositionNames.txt")
-    startingSalary = getValuesFromFile("PositionsStartingSalary.txt")
-    WorkRequirement = getValuesFromFile("PositionRequirments.txt")
+    positionIDs = getValuesFromFile("txtFiles/PositionIDS.txt")
+    positionNames = getValuesFromFile("txtFiles/PositionNames.txt")
+    startingSalary = getValuesFromFile("txtFiles/PositionsStartingSalary.txt")
+    WorkRequirement = getValuesFromFile("txtFiles/PositionRequirments.txt")
     requirement = ''
     # counter = 0
     # for i in positionIDs:
@@ -33,8 +33,8 @@ if __name__ == '__main__':
 
        '''
 
-    print("INSERT INTO PRODUCTS VALUES")
-    openFile = open("PositionID_Name_Salary.txt", "w")
+    print("INSERT INTO POSITIONS VALUES")
+    openFile = open("txtFiles/PositionID_Name_Salary.txt", "w")
     salary = 0
 
     for i in range(len(positionNames)):
@@ -51,11 +51,11 @@ if __name__ == '__main__':
 
         openFile.write(f"{positionIDs[i]} | {positionNames[i][1:]} | {startingSalary[salary]}\n")
 
-        print(f"({positionIDs[i]}, "
+        print(f"('{positionIDs[i]}', "
               f"'{positionNames[i][1:]}', "
-              f"{startingSalary[salary]},"
+              f"{float(startingSalary[salary])},"
               f"'{requirement}', "
-              f"'{amountOfDepIDS[random.randint(0, len(amountOfDepIDS)-1)]}')", end='')
+              f"'{amountOfDepIDS[random.randint(0, len(amountOfDepIDS) - 1)]}')", end='')
 
         if i != len(positionNames) - 1:
             print(",")

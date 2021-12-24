@@ -11,7 +11,7 @@ This file generates the data for the customers table
 '''
 
 def generateCustomerIDS(amountOfNumbersToGenerate):
-    writeToListOfCustomersPKs = open('listOfMyCustomerPKs.txt', 'w')
+    writeToListOfCustomersPKs = open('txtFiles/listOfMyCustomerPKs.txt', 'w')
     pkList = [math.floor(random.random() * 1000000) for x in range(amountOfNumbersToGenerate)]
     setOfPks = set(pkList)
     newPkList = []
@@ -23,19 +23,19 @@ def generateCustomerIDS(amountOfNumbersToGenerate):
 
 
 def getAListOfFirstNames():
-    readFirstNamefile = open('firstNames.txt')
+    readFirstNamefile = open('txtFiles/firstNames.txt')
     nameList = list(readFirstNamefile.read().split("\n"))
     readFirstNamefile.close()
     return nameList
 
 def getAListOfLastNames():
-    readLastNamefile = open('lastNames.txt')
+    readLastNamefile = open('txtFiles/lastNames.txt')
     nameList = list(readLastNamefile.read().split(",\n"))
     readLastNamefile.close()
     return nameList
 
 def generatePhoneNumbers():
-    readAreaCodes = open('areaCodes.txt')
+    readAreaCodes = open('txtFiles/areaCodes.txt')
     areaCodeList = list(readAreaCodes.read().split("\n"))
     readAreaCodes.close()
     return f"{areaCodeList[random.randint(0, len(areaCodeList) -1)]}" \
@@ -45,7 +45,7 @@ def generatePhoneNumbers():
 
 def getAListOfEmails(lastNames, firstNames):
     emailList = []
-    readEmailVendors = open('emailVendors.txt')
+    readEmailVendors = open('txtFiles/emailVendors.txt')
     emailVendorList = list(readEmailVendors.read().split("\n"))
     for i in range(1000):
         emailList.append(f"{firstNames[i]}{str(lastNames[i])[:2]}"
@@ -57,7 +57,7 @@ def getAListOfEmails(lastNames, firstNames):
 def getAddress():
     addresses = []
     zipCodes = []
-    readAddresses = open('address.txt')
+    readAddresses = open('txtFiles/address.txt')
     addressList = list(readAddresses.read().split("\n"))
     for i in addressList:
         if 'NY' in i:

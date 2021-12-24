@@ -24,11 +24,11 @@ def getValuesFromFile(fileName):
 #     createFile.close()
 
 if __name__ == '__main__':
-    InvoiceIDS = getValuesFromFile("InvoiceIDS.txt")
-    customerIDs = getValuesFromFile("listOfMyCustomerPKs.txt")
-    Emp_IDS = getValuesFromFile("salesPeople.txt")
-    Dates = getValuesFromFile("dates.txt")
-    referallCode = getValuesFromFile("referallCode.txt")
+    InvoiceIDS = getValuesFromFile("txtFiles/InvoiceIDS.txt")
+    customerIDs = getValuesFromFile("txtFiles/listOfMyCustomerPKs.txt")
+    Emp_IDS = getValuesFromFile("txtFiles/salesPeople.txt")
+    Dates = getValuesFromFile("txtFiles/dates.txt")
+    referallCode = getValuesFromFile("txtFiles/referallCode.txt")
 
     print("INSERT INTO INVOICES VALUES")
     num = 2000

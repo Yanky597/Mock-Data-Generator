@@ -10,7 +10,7 @@ def getCustomerPks():
     getAFakeHash()
 
     hashes = []
-    readPks = open("listOfMyCustomerPKs.txt")
+    readPks = open("txtFiles/listOfMyCustomerPKs.txt")
     pkList = list(readPks.read().split("\n"))
     for i in pkList:
         hashes.append(getAFakeHash())

@@ -1,0 +1,13 @@
+6636075392 | Warehouse Worker | 50000
+9438288414 | Delivery Person | 50000
+0861737261 | Maintenance | 50000
+3226608088 | Shipping Personal | 60000
+9593713972 | Customer Service | 80000
+0822439719 | Marketing | 120000
+2537508041 | Sales | 100000
+4524993312 | Accountant | 110000
+6540046200 | HR | 110000
+9315407504 | Engineer | 120000
+1654585327 | Front End Developer | 100000
+3043883780 | Back End Developer | 100000
+2948639050 | Database Engineer | 140000

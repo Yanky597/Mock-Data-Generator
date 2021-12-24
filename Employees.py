@@ -12,7 +12,7 @@ for example this EMPLOYEES.py
 
 
 def generateCustomerIDS(amountOfNumbersToGenerate):
-    writeToListOfCustomersPKs = open('listOfMyCustomerPKs.txt', 'w')
+    writeToListOfCustomersPKs = open('txtFiles/listOfMyCustomerPKs.txt', 'w')
     pkList = [math.floor(random.random() * 1000000) for x in range(amountOfNumbersToGenerate)]
     setOfPks = set(pkList)
     newPkList = []
@@ -24,21 +24,21 @@ def generateCustomerIDS(amountOfNumbersToGenerate):
 
 
 def getAListOfFirstNames():
-    readFirstNamefile = open('firstNames.txt')
+    readFirstNamefile = open('txtFiles/firstNames.txt')
     nameList = list(readFirstNamefile.read().split("\n"))
     readFirstNamefile.close()
     return nameList
 
 
 def getAListOfLastNames():
-    readLastNamefile = open('lastNames.txt')
+    readLastNamefile = open('txtFiles/lastNames.txt')
     nameList = list(readLastNamefile.read().split(",\n"))
     readLastNamefile.close()
     return nameList
 
 
 def generatePhoneNumbers():
-    readAreaCodes = open('areaCodes.txt')
+    readAreaCodes = open('txtFiles/areaCodes.txt')
     areaCodeList = list(readAreaCodes.read().split("\n"))
     readAreaCodes.close()
     return f"{areaCodeList[random.randint(0, len(areaCodeList) - 1)]}" \
@@ -61,7 +61,7 @@ def getAListOfEmails(lastNames, firstNames):
 def getAddress():
     addresses = []
     zipCodes = []
-    readAddresses = open('address.txt')
+    readAddresses = open('txtFiles/address.txt')
     addressList = list(readAddresses.read().split("\n"))
     for i in addressList:
         if 'NY' in i:
@@ -108,9 +108,10 @@ def getPositionIDsAndSalaries(fileName):
 #
 #     createFile.close()
 
-def getManagers():
+def getManagers(num):
     managerList = []
-    employeeIDS = getValuesFromFile("EmployeeID.txt")
+    employeeIDS = getValuesFromFile("txtFiles/EmployeeID.txt")[:num]
+    # empList = employeeIDS[:num]
     for i in range(math.floor(len(employeeIDS) / 15)):
         manager = employeeIDS[random.randint(0, len(employeeIDS) - 1)]
         while (manager in managerList):
@@ -120,23 +121,25 @@ def getManagers():
 
 
 if __name__ == '__main__':
-    employeeIDS = getValuesFromFile("EmployeeID.txt")
-    lastNameList = sorted(getValuesFromFile('lastNames.txt'), reverse=True)
-    firstNameList = getValuesFromFile('firstNames.txt')
+    num = 500
+    employeeIDS = getValuesFromFile("txtFiles/EmployeeID.txt")
+    lastNameList = sorted(getValuesFromFile('txtFiles/lastNames.txt'), reverse=True)
+    firstNameList = getValuesFromFile('txtFiles/firstNames.txt')
     emailList = getAListOfEmails(lastNameList, firstNameList)
-    positionIDS = getPositionIDsAndSalaries("PositionID_Name_Salary.txt")
+    positionIDS = getPositionIDsAndSalaries("txtFiles/PositionID_Name_Salary.txt")
     posIDS = positionIDS[0]
     salaries = positionIDS[1]
-    durationAtCompany = sorted(getValuesFromFile("dates.txt"), reverse=True)
-    managersIDS = getManagers()
-    writeToMangers = open("Managers.txt", "w")
+    durationAtCompany = sorted(getValuesFromFile("txtFiles/dates.txt"), reverse=True)
+    managersIDS = getManagers(num)
+
+    writeToMangers = open("txtFiles/Managers.txt", "w")
+
     for i in managersIDS:
         writeToMangers.write(f"{i}\n")
     writeToMangers.close()
 
-    num = 500
 
-    createSales = open("salesPeople.txt", "w")
+    createSales = open("txtFiles/salesPeople.txt", "w")
 
     manager = ''
     print("INSERT INTO EMPLOYEES VALUES", end='')
@@ -144,7 +147,7 @@ if __name__ == '__main__':
         manager = managersIDS[random.randint(0, len(managersIDS) - 1)]
 
         if employeeIDS[i] in managersIDS:
-            manager = "\'\'"
+            manager = " "
         elif employeeIDS[i] == manager:
             while employeeIDS[i] == manager:
                 manager = managersIDS[random.randint(0, len(managersIDS) - 1)]
@@ -160,9 +163,9 @@ if __name__ == '__main__':
               F"'{generatePhoneNumbers()}', "
               F"'{emailList[i]}', "
               F"'{posIDS[position]}', "
-              F"'{int(salaries[position]) * random.randint(1, 3)}', "
+              F"{int(salaries[position]) * random.randint(1, 3)}, "
               F"'{durationAtCompany[random.randint(0, len(durationAtCompany) - 1)]}',"
-              F"{manager}"
+              F"'{manager}'"
               F")", end='')
 
         if (i != num - 1):

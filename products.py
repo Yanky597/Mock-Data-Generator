@@ -4,10 +4,10 @@ import math
 
 def createProductId(amountNeeded):
     listOfProductIDs = [math.floor(random.random() * 1000) for x in range(amountNeeded)]
-    writeToProductIDS = open("ProductIDS.txt", "w")
+    writeToProductIDS = open("txtFiles/ProductIDS.txt", "w")
 
     for i in listOfProductIDs:
-        writeToProductIDS.write(str(i))
+        writeToProductIDS.write(f'{i}\n')
 
     writeToProductIDS.close()
     return listOfProductIDs
@@ -18,8 +18,8 @@ def createProductId(amountNeeded):
     return listOfProductIDs
 
 def getProductNames():
-    readProductNames = open("productNames.txt")
-    writeToProductSyle = open("productStyleNumbers", "w")
+    readProductNames = open("txtFiles/productNames.txt")
+    writeToProductSyle = open("txtFiles/productStyleNumbers", "w")
     listOfProductNames = readProductNames.read().split("\n")
     for i in range(len(listOfProductNames)):
         writeToProductSyle.write(f"PN-{str(listOfProductNames[i])[:2]}{math.floor(random.random()*100000)}\n")
@@ -29,13 +29,13 @@ def getProductNames():
     return listOfProductNames
 
 def getProductStyleNums():
-    readProductStyles = open("productStyleNumbers")
+    readProductStyles = open("txtFiles/productStyleNumbers")
     productStyles = readProductStyles.read().split("\n")
     readProductStyles.close()
     return productStyles
 
 def generatePrices():
-    readProductPrices = open("costPrices.txt")
+    readProductPrices = open("txtFiles/costPrices.txt")
     costPrice = readProductPrices.read().split("\n")
     salePrice = []
     for i in costPrice:
@@ -46,7 +46,7 @@ def generatePrices():
     return [costPrice, salePrice]
 
 def getDates(amountOfDates):
-    readDates = open("dates.txt")
+    readDates = open("txtFiles/dates.txt")
     dateList = list(readDates.read().split("\n"))
     readDates.close()
     return dateList

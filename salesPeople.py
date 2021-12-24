@@ -7,7 +7,7 @@ def getValuesFromFile(fileName):
 
 if __name__ == '__main__':
 
-    salesPeople = getValuesFromFile("salesPeople.txt")
+    salesPeople = getValuesFromFile("txtFiles/salesPeople.txt")
 
 
     print("INSERT INTO SALESPEOPLE VALUES")
