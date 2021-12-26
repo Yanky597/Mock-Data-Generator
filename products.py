@@ -13,10 +13,6 @@ def createProductId(amountNeeded):
     return listOfProductIDs
 
 
-
-
-    return listOfProductIDs
-
 def getProductNames():
     readProductNames = open("txtFiles/productNames.txt")
     writeToProductSyle = open("txtFiles/productStyleNumbers", "w")

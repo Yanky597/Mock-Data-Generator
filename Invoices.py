@@ -31,17 +31,17 @@ if __name__ == '__main__':
     referallCode = getValuesFromFile("txtFiles/referallCode.txt")
 
     print("INSERT INTO INVOICES VALUES")
-    num = 2000
+    num = 100
     for i in range(num):
         bool = random.randint(0, 1)
         if(bool == 1):
-            salesPerson = Emp_IDS[random.randint(0, len(Emp_IDS) - 1)]
+            salesPerson = f"\'{Emp_IDS[random.randint(0, len(Emp_IDS) - 1)]}\'"
         else:
-            salesPerson = 0
-        print(f"({i}, "
-              f"{customerIDs[random.randint(0, len(customerIDs) - 1 )]},"
+            salesPerson = 'NULL'
+        print(f"('{i}', "
+              f"'{customerIDs[random.randint(0, len(customerIDs) - 1 )]}',"
               f" {salesPerson}, "
-              f"'{Dates[random.randint(0, len(Dates)-1)]}'"
+              f"'{Dates[random.randint(0, len(Dates)-1)]}', "
               f"{0},"
               f"'{referallCode[random.randint(0, len(referallCode) - 1)]}')", end="")
         if (i != num - 1):
