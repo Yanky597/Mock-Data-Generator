@@ -72,7 +72,7 @@ def getAddress():
 if __name__ == '__main__':
     randNum = random.randint(1000, 10000)
     num = 1000
-    customerIDs = generateCustomerIDS(num)
+    # customerIDs = generateCustomerIDS(num)
     lastNames = getAListOfLastNames()
     firstNames = getAListOfFirstNames()
     emailList = getAListOfEmails(lastNames, firstNames)
