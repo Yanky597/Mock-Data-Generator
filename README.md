@@ -3,4 +3,7 @@
 > and format that data as a SQL statment for the purpose
 > of creating a mock Ecommerce database
 
-Completed Database is the file : EcommerceDatabase.bacpac
+### Addtional Information:
+- Completed Database is the file : EcommerceDatabase.bacpac
+- There is a Query.sql file that contains SQL queries that can be ran against the completed database.
+
